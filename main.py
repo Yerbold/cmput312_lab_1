@@ -53,13 +53,22 @@ def main():
 
     # print something to the screen of the device
     print('Hello World!')
-
-    for i in range(3):
-        tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
-        tank_drive.on_for_rotations(SpeedPercent(50), SpeedPercent(50), 1)
-        tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
-        tank_drive.on_for_rotations(SpeedPercent(0), SpeedPercent(75), 10)
-
+    # rectangular path
+    tank_drive = MoveTank(OUTPUT_A, OUTPUT_D)
+    # for i in range(4):
+    #     tank_drive.on_for_rotations(SpeedPercent(50), SpeedPercent(50), 1)
+    #     tank_drive.on_for_rotations(SpeedPercent(-25), SpeedPercent(20.625), 0.5625)
+    #     sleep(0.5)
+    # sleep(1)
+    # lemniscate path
+    tank_drive.on_for_rotations(SpeedPercent(50), SpeedPercent(25), 1)
+    tank_drive.on_for_rotations(SpeedPercent(25), SpeedPercent(-25), 1)
+    tank_drive.on_for_rotations(SpeedPercent(50), SpeedPercent(50), 1)
+    tank_drive.on_for_rotations(SpeedPercent(25), SpeedPercent(-25), 0.25)
+    tank_drive.on_for_rotations(SpeedPercent(25), SpeedPercent(25), 1)
+    tank_drive.on_for_rotations(SpeedPercent(25), SpeedPercent(-25), 1)
+    tank_drive.on_for_rotations(SpeedPercent(50), SpeedPercent(50), 1)
+    sleep(0.5)
     # print something to the output panel in VS Code
     debug_print('Hello VS Code!')
 
